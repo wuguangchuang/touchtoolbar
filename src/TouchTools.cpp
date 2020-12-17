@@ -12,6 +12,7 @@
 #include <QTextStream>
 #include <QtEndian>
 #include <QSemaphore>
+#include <windows.h>
 
 using namespace Touch;
 #define UPGRADE_FILE_DIR  "config/"
@@ -49,6 +50,52 @@ void TouchTools::onTouchHotplug(touch_device *dev, const int attached, const voi
         checksum = QString().sprintf(" 0x%04X", toWord(finfo.checksum_l, finfo.checksum_h));
         QString message = tr("Fireware version:") + version +"   "+ tr("Fireware checksum:") + checksum;
         appendMessageText(message,1);
+    }
+    qint8 mode = 0;
+    if(argc > 1 && strcmp(argv[1],"-changeCoordsMode") == 0)
+    {
+        argcTimer->stop();
+        int setCoordsSuccessRet = -1;
+        if(dev != NULL && !dev->touch.booloader && dev->touch.connected)
+        {
+            setCoordsSuccessRet = mTouchManager->getCoordsMode(dev,COORDS_CHANNEL_USB,&mode);
+            if(mode == 1)
+            {
+                setCoordsSuccessRet = mTouchManager->setCoordsMode(dev,COORDS_CHANNEL_USB,0x02);
+            }
+            else if(mode == 2)
+            {
+                setCoordsSuccessRet = mTouchManager->setCoordsMode(dev,COORDS_CHANNEL_USB,0x01);
+            }
+        }
+        if(setCoordsSuccessRet < 0)
+        {
+            if(language == en_US)
+                MessageBox(NULL,TEXT("Set coordinate mode failed"),TEXT("Coordinate"),MB_ICONHAND|MB_OK);
+            else
+                MessageBox(NULL,TEXT("设置坐标模式失败"),TEXT("坐标"),MB_ICONHAND|MB_OK);
+        }
+        else
+        {
+            if(mode == 1)
+            {
+                if(language == en_US)
+                    MessageBox(NULL,TEXT("Set to multi-touch mode"),TEXT("Coordinate"),MB_ICONINFORMATION|MB_OK);
+                else
+                   MessageBox(NULL,TEXT("设置为多点触摸模式"),TEXT("坐标"),MB_ICONINFORMATION|MB_OK);
+            }
+            else if(mode == 2)
+            {
+                if(language == en_US)
+                    MessageBox(NULL,TEXT("Set to simulate mouse mode"),TEXT("Coordinate"),MB_ICONINFORMATION|MB_OK);
+                else
+                   MessageBox(NULL,TEXT("设置为模拟鼠标模式"),TEXT("坐标"),MB_ICONINFORMATION|MB_OK);
+            }
+
+        }
+        mTouchManager->mHotplugThread.stopThread();
+        TDEBUG("桌面快捷方式切换坐标模式");
+        exit(0);
     }
 
     //发送信号
@@ -100,7 +147,7 @@ void TouchTools::onTouchHotplug(touch_device *dev, const int attached, const voi
             }
             if(!flag)
             {
-                presenter->showToast("自动升级文件不存在!!");
+                presenter->showToast(tr("file does no exist"));
             }
 
         }
@@ -764,18 +811,23 @@ QVariantMap TouchTools::getSignalData(QVariant index, int count)
 }
 
 #define show_line() TDEBUG("%s [%d]", __func__, __LINE__);
-TouchTools::TouchTools(QObject *parent, TouchPresenter *presenter) : QObject(parent),
+TouchTools::TouchTools(QObject *parent, TouchPresenter *presenter,int argc,char **argv) : QObject(parent),
     mTestLstener(this), mUpgradeListener(this), initSdkThread(this), upgradeThread(this),
     touchAging(presenter, NULL), appType(APP_FACTORY), hotplugInterval(0),testThread(this)
 {
 
-
+    if(argc > 0)
+    {
+     this->argc = argc;
+     this->argv = argv;
+    }
     firstTimeUpdate = false;
     if (presenter == NULL) {
         TDebug::error("presenter is NULL");
         return;
     }
     timer = new QTimer(this);
+    argcTimer = new QTimer(this);
     this->presenter = presenter;
     presenter->setTouchInterface(this);
     presenter->setAppType((int)appType);
@@ -801,6 +853,12 @@ TouchTools::TouchTools(QObject *parent, TouchPresenter *presenter) : QObject(par
 
     QObject::connect(timer,SIGNAL(timeout()),this,SLOT(timeoutWorking()));
     timer->start(25000);
+
+    QObject::connect(argcTimer,SIGNAL(timeout()),this,SLOT(exitProject()));
+    if(argc > 1 && strcmp(argv[1],"-changeCoordsMode") == 0)
+    {
+        argcTimer->start(2000);
+    }
     TINFO("start init thread");
     addTouchManagerTr();
     initSdkThread.start();
@@ -813,6 +871,24 @@ void TouchTools::timeoutWorking()
         return;
     }
     startUpgrade();
+}
+int TouchTools::language = zh_CN;
+void TouchTools::setLanguage(int lu)
+{
+    language = lu;
+}
+
+void TouchTools::exitProject()
+{
+    mTouchManager->mHotplugThread.stopThread();
+    if(argc > 1 && QString::compare(argv[1],"-changeCoordsMode") == 0)
+    {
+        if(language == en_US)
+            MessageBox(NULL,TEXT("Touch device disconnected"),TEXT("error"),MB_ICONHAND|MB_OK);
+        else
+            MessageBox(NULL,TEXT("没有连接到触摸框设备"),TEXT("错误"),MB_ICONHAND|MB_OK);
+    }
+    exit(0);
 }
 TouchTools::~TouchTools()
 {

@@ -359,6 +359,7 @@ public:
     void onboardTestFinish(QString title, QString message, int type = 0);
     void onboardShowDialog(QString title, QString message, int type = 0);
     void setCurrentIndex(int index);
+    void setWindowHidden(bool visibled);
 
 signals:
     void agingFinished(int index);

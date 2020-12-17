@@ -25,6 +25,9 @@ using namespace Touch;
 
 #include "include/drawpanel.h"
 
+#define zh_CN 1
+#define en_US 0
+
 //分析设备，然后将设备添加到设备链表struct _touch_vendor_list
 void parseDevices(QFile &loadFile)
 {
@@ -234,12 +237,25 @@ int main(int argc, char *argv[])
 
     int currentIndex = QQmlProperty::read(config, "currentIndex").toInt(&ok);
 
+    bool switchOnboardTest = QQmlProperty::read(config, "switchOnboardTest").toBool();
+
     //销毁组件实例
     configQml.destroyed(config);
     TINFO("Property ignoreFailedTestItem value: %d", ignoreFailedTestItem);
     TINFO("Property showTestData value: %d", showTestData);
     TouchManager::setIgnoreFailedTestItem(ignoreFailedTestItem);
     TouchManager::setShowTestData(showTestData);
+    TouchManager::setSwitchOnboardTest(switchOnboardTest);
+    if(lang.compare("en_US") == 0)
+    {
+        TDEBUG("设置为英文");
+        TouchTools::setLanguage(en_US);
+    }
+    else
+    {
+        TDEBUG("设置为中文");
+        TouchTools::setLanguage(zh_CN);
+    }
 
     // get config veondor touch devices
     QFile loadFile(QStringLiteral("config/devices.json"));
@@ -276,18 +292,26 @@ int main(int argc, char *argv[])
 
     engine.rootContext()->setContextProperty("autoDisableCoordinate", autoDisableCoordinate == 1);
     TINFO("autoDisableCoordinate=%d", autoDisableCoordinate);
+    QObject *object = NULL;
 
+    if(argc > 1 && QString::compare(argv[1],"-changeCoordsMode") == 0)
+    {
 
-    QQmlComponent component(&engine, QUrl(QStringLiteral("qrc:/main.qml")));
-    if (component.isError())
-        TDebug::debug("main.qml error:" + component.errorString());
-    QObject *object = component.create();
-    touch->setComponent(object);
+    }
+    else
+    {
+        QQmlComponent component(&engine, QUrl(QStringLiteral("qrc:/main.qml")));
+        if (component.isError())
+            TDebug::debug("main.qml error:" + component.errorString());
+        object = component.create();
+        touch->setComponent(object);
+    }
+
 
     //该函数就是调用object对象中的setAppType方法，如果调用成功则返回true，调用失败则返回false，
     QMetaObject::invokeMethod(object, "setAppType",
         Q_ARG(QVariant, (int)THIS_APP_TYPE));
-    TouchTools manager(NULL, touch);
+    TouchTools manager(NULL, touch,argc,argv);
     TINFO("singleApp=%p", singleApp);
     if (singleApp) {
         QObject::connect(singleApp, SIGNAL(newRunner()), manager.getTouchPresenter(), SLOT(newRunner()));

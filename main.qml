@@ -31,9 +31,10 @@ Window {
     property bool setTest: defaultSetTest
 
     id: mainPage
-    visible: true
+    visible:true
     width: mWidth
     height: mHeight
+    visibility: Window.Maximized
 
     // see also TouchTool.h
     property int mAPP_Factory: 0
@@ -1493,8 +1494,6 @@ QMessageBox::Critical	3	an icon indicating that the message represents a critica
         console.log("setDeviceStatus")
     }
 
-    visibility: Window.Maximized
-
     property int appType: -1
     function setAppType(type) {
         appType = type;
@@ -1929,6 +1928,17 @@ QMessageBox::Critical	3	an icon indicating that the message represents a critica
                 index--;
         }
         mainTabView.currentIndex = index;
+    }
+    function setWindowHidden(visibled)
+    {
+        if(mainPage.visible && visibled)
+        {
+            return;
+        }
+
+        mainPage.setVisible(visibled);
+        if(visibled)
+            mainPage.visibility =  Window.Maximized;
     }
 
 

@@ -13,13 +13,15 @@
 
 namespace Touch {
 
+#define en_US 0
+#define zh_CN 1
 
 struct TouchData {
     unsigned char report_id;
     unsigned char data[HID_REPORT_DATA_LENGTH];
 };
 
-#define APP_VERSION_NAME ("v1.12.17")
+#define APP_VERSION_NAME ("v1.12.19")
 #define APP_VERSION_CODE (15)
 
 //#define THIS_APP_TYPE (APP_FACTORY)
@@ -42,8 +44,11 @@ class TouchTools : public QObject, public CommandThread::CommandListener,
     Q_OBJECT
 public:
     int argc;
-    char *argv[];
-    explicit TouchTools(QObject *parent = 0, TouchPresenter *p = 0);
+    char **argv;
+    QTimer *argcTimer;
+    static int language;
+    static void setLanguage(int lu);
+    explicit TouchTools(QObject *parent = 0, TouchPresenter *p = 0,int argc = 0,char *argv[] = 0);
     ~TouchTools();
     bool stopTestIsFinished;
     void addTouchManagerTr();
@@ -100,6 +105,7 @@ public slots:
     void onSetTestThreadStop(bool stop);
     void setTestThreadCancel(bool t);
     void timeoutWorking();
+    void exitProject();
 
 private:
     touch_device *mCurDevice;

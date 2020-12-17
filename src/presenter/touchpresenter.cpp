@@ -385,6 +385,7 @@ void TouchPresenter::showToast(QString str)
                               Q_ARG(QVariant, str));
 }
 
+
 QVariant TouchPresenter::getRelativeInfo()
 {
     return QVariant::fromValue(touch->getRelativeInfo());
@@ -450,7 +451,16 @@ void TouchPresenter::setCurrentIndex(int index)
         TDebug::warning("component is NULL");
         return;
     }
-     QMetaObject::invokeMethod(component, "setCurrentIndex",Q_ARG(QVariant, index));
+    QMetaObject::invokeMethod(component, "setCurrentIndex",Q_ARG(QVariant, index));
+}
+
+void TouchPresenter::setWindowHidden(bool visibled)
+{
+    if (component == NULL) {
+        TDebug::warning("component is NULL");
+        return;
+    }
+    QMetaObject::invokeMethod(component, "setCurrentIndex",Q_ARG(QVariant, visibled));
 }
 
 void TouchPresenter::updateSignalList(QVariant list)
