@@ -851,8 +851,8 @@ TouchTools::TouchTools(QObject *parent, TouchPresenter *presenter,int argc,char 
     QObject::connect(presenter, SIGNAL(startTest()),
                      this, SLOT(startTest()));
 
-    QObject::connect(timer,SIGNAL(timeout()),this,SLOT(timeoutWorking()));
-    timer->start(25000);
+//    QObject::connect(timer,SIGNAL(timeout()),this,SLOT(timeoutWorking()));
+//    timer->start(25000);
 
     QObject::connect(argcTimer,SIGNAL(timeout()),this,SLOT(exitProject()));
     if(argc > 1 && strcmp(argv[1],"-changeCoordsMode") == 0)

@@ -24,9 +24,9 @@ struct TouchData {
 #define APP_VERSION_NAME ("v1.12.19")
 #define APP_VERSION_CODE (15)
 
-//#define THIS_APP_TYPE (APP_FACTORY)
+#define THIS_APP_TYPE (APP_FACTORY)
 //#define THIS_APP_TYPE (APP_CLIENT)
-#define THIS_APP_TYPE (APP_RD)
+//#define THIS_APP_TYPE (APP_RD)
 //#define THIS_APP_TYPE (APP_PCBA)
 // see also: main.qml(appFactory...)
 typedef enum {

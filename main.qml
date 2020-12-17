@@ -851,8 +851,10 @@ Window {
                             Rectangle
                             {
                                 id:deviceInfoNameID
-                                width: deviceWidth
-                                height: deviceHeight
+//                                width: deviceWidth
+//                                height: deviceHeight
+                                width:300
+                                height: parent.height
                                 anchors.top:parent.top
                                 anchors.left: parent.left
                                 Cont2.Label {
@@ -863,7 +865,7 @@ Window {
                                     anchors.top: parent.top
                                     padding: 20     //间距
                                     font.pointSize: 13
-                                    text: deviceInfoName
+                                    text: deviceInfoName + "\n" +softwareInfoName
                                     lineHeight: 1.5     //行距
                                     lineHeightMode: Text.ProportionalHeight  //按比例
                                 }
@@ -873,7 +875,8 @@ Window {
                                 anchors.top:parent.top
                                 anchors.left: deviceInfoNameID.right
                                 anchors.leftMargin: defaultMargin
-                                height: deviceInfoHeight
+//                                height: deviceInfoHeight
+                                height: parent.height
                                 Cont2.Label
                                 {
                                     textFormat: Text.AutoText
@@ -881,7 +884,7 @@ Window {
                                     anchors.top: parent.top
                                     padding: 20     //间距
                                     font.pointSize: 13
-                                    text: deviceInfoString
+                                    text: deviceInfoString + "\n" +softwareInfo
                                     lineHeight: 1.5     //行距
                                     lineHeightMode: Text.ProportionalHeight  //按比例
                                 }
@@ -889,47 +892,47 @@ Window {
 
                         }
                         //软件部分
-                        RowLayout
-                        {
-                            anchors.left: parent.left
-                            anchors.top: deviceID.bottom
-                            Rectangle
-                            {
-                                id:softwareInfoNameID
-                                width: 250
-                                anchors.left: parent.left
-                                anchors.top: parent.top
-                                Cont2.Label
-                                {
-                                    textFormat: Text.AutoText
-                                    anchors.left: parent.left
-                                    anchors.top: parent.top
-                                    padding: 20     //间距
-                                    font.pointSize: 13
-                                    text: softwareInfoName
-                                    lineHeight: 1.5     //行距
-                                    lineHeightMode: Text.ProportionalHeight  //按比例
-                                }
-                            }
-                            Rectangle
-                            {
-                                id:softwareInfoID
-                                anchors.top: parent.top
-                                anchors.left: softwareInfoNameID.right
-                                anchors.leftMargin: defaultMargin
-                                Cont2.Label
-                                {
-                                    textFormat: Text.AutoText
-                                    anchors.left: parent.left
-                                    anchors.top: parent.top
-                                    padding: 20     //间距
-                                    font.pointSize: 13
-                                    text: softwareInfo
-                                    lineHeight: 1.5     //行距
-                                    lineHeightMode: Text.ProportionalHeight  //按比例
-                                }
-                            }
-                        }
+//                        RowLayout
+//                        {
+//                            anchors.left: parent.left
+//                            anchors.top: deviceID.bottom
+//                            Rectangle
+//                            {
+//                                id:softwareInfoNameID
+//                                width: 250
+//                                anchors.left: parent.left
+//                                anchors.top: parent.top
+//                                Cont2.Label
+//                                {
+//                                    textFormat: Text.AutoText
+//                                    anchors.left: parent.left
+//                                    anchors.top: parent.top
+//                                    padding: 20     //间距
+//                                    font.pointSize: 13
+//                                    text: softwareInfoName
+//                                    lineHeight: 1.5     //行距
+//                                    lineHeightMode: Text.ProportionalHeight  //按比例
+//                                }
+//                            }
+//                            Rectangle
+//                            {
+//                                id:softwareInfoID
+//                                anchors.top: parent.top
+//                                anchors.left: softwareInfoNameID.right
+//                                anchors.leftMargin: defaultMargin
+//                                Cont2.Label
+//                                {
+//                                    textFormat: Text.AutoText
+//                                    anchors.left: parent.left
+//                                    anchors.top: parent.top
+//                                    padding: 20     //间距
+//                                    font.pointSize: 13
+//                                    text: softwareInfo
+//                                    lineHeight: 1.5     //行距
+//                                    lineHeightMode: Text.ProportionalHeight  //按比例
+//                                }
+//                            }
+//                        }
                     }
                 }
                 function showDeviceInfo()
