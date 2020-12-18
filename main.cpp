@@ -239,6 +239,8 @@ int main(int argc, char *argv[])
 
     bool switchOnboardTest = QQmlProperty::read(config, "switchOnboardTest").toBool();
 
+    bool continueOnboardTest = QQmlProperty::read(config, "continueOnboardTest").toBool();
+
     //销毁组件实例
     configQml.destroyed(config);
     TINFO("Property ignoreFailedTestItem value: %d", ignoreFailedTestItem);
@@ -246,6 +248,7 @@ int main(int argc, char *argv[])
     TouchManager::setIgnoreFailedTestItem(ignoreFailedTestItem);
     TouchManager::setShowTestData(showTestData);
     TouchManager::setSwitchOnboardTest(switchOnboardTest);
+    TouchManager::setContinueOnboardTest(continueOnboardTest);
     if(lang.compare("en_US") == 0)
     {
         TDEBUG("设置为英文");

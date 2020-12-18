@@ -287,6 +287,7 @@ public:
     static void setIgnoreFailedTestItem(bool ignore);
     static void setIgnoreFailedOnboardTestItem(bool ignore);
     static void setSwitchOnboardTest(bool enable);
+    static void setContinueOnboardTest(bool _continueOnboardTest);
     TOUCHSHARED_EXPORT void setHutplugCheckInterval(unsigned int interval);
     static void test(void);
 private:
@@ -338,6 +339,7 @@ private:
     static bool mIgnoreFailedTestItem;
     static bool mIgnoreFailedOnboardTestItem;
     static bool switchOnboardTest;
+    static bool continueOnboardTest;
 
 public:
     Trans *translator;

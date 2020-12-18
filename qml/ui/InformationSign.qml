@@ -37,7 +37,7 @@ Item {
     property var backgroundColor: "#FFFFFFFF"
     property var titleColor: "#FF64B5F6"
     property real defaultMargin: 5
-    property real minWidth: 400
+    property real minWidth: 479
     property string diglogTitleText: ""
 
     property bool showIcon: false
