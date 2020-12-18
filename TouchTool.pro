@@ -98,7 +98,8 @@ DISTFILES += \
     devices.json \
     qml/ui/PlateLoadTest.qml \
     qml/ui/OnboardTestInterface.qml \
-    qml/ui/InformationSign.qml
+    qml/ui/InformationSign.qml \
+    qml/ui/MyButton.qml
 
 # Default rules for deployment.
 include(deployment.pri)

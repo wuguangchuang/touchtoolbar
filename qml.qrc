@@ -22,5 +22,11 @@
         <file>qml/ui/InformationSign.qml</file>
         <file>lang/zh_CN.qm</file>
         <file>lang/en_US.qm</file>
+        <file>qml/ui/MyButton.qml</file>
+        <file>qml/ui/SettingCalibratePage.qml</file>
+        <file>qml/ui/SettingCoordsPage.qml</file>
+        <file>qml/ui/SettingMyToolButton.qml</file>
+        <file>qml/ui/SettingPage.qml</file>
+        <file>qml/ui/SettingSpinPage.qml</file>
     </qresource>
 </RCC>

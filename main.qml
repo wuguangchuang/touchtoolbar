@@ -799,6 +799,39 @@ Window {
                 }
             }
 
+//            Tab {
+
+//                id: settingsTabId
+//                property Item settingsPage: (item !== null) ? item.settingsPageV : null
+//                title: qsTr("Settings")
+//                property int what: mTAB_Settings
+//                Rectangle {
+//                    anchors.fill: parent
+//                    property Item settingsPageV: settingsId
+//                    Settings {
+//                        id: settingsId
+//                        anchors.fill: parent
+//                        Component.onCompleted: {
+////                            settingsId.caliDataDelegate = calibrationDataDelegate;
+//                            settingsId.caliDataModel = calibrationDataModel;
+//                        }
+//                        onClickCalibration: {
+//                              enterCalibrate();
+////                            calibrationUi.visible = true;
+////                            lastVisibility = mainPage.visibility;
+////                            showFullScreen();
+////                            showToast("无操作" + "后自动退出")
+//                        }
+//                    }
+//                }
+//                onVisibleChanged: {
+//                    if (visible)
+//                    {
+//                        touch.tPrintf("设置模式:");
+//                        settingsPage.refreshSettings();
+//                    }
+//                }
+//            }
             Tab {
 
                 id: settingsTabId
@@ -808,31 +841,23 @@ Window {
                 Rectangle {
                     anchors.fill: parent
                     property Item settingsPageV: settingsId
-                    Settings {
-                        id: settingsId
+                    SettingPage{
+                        id:settingsId
                         anchors.fill: parent
-                        Component.onCompleted: {
-//                            settingsId.caliDataDelegate = calibrationDataDelegate;
-                            settingsId.caliDataModel = calibrationDataModel;
-                        }
-                        onClickCalibration: {
-                              enterCalibrate();
-//                            calibrationUi.visible = true;
-//                            lastVisibility = mainPage.visibility;
-//                            showFullScreen();
-//                            showToast("无操作" + "后自动退出")
-                        }
+//                        Component.onCompleted: {
+//                            settingsId.caliDataModel = calibrationDataModel;
+//                        }
                     }
+
                 }
                 onVisibleChanged: {
-                    if (visible)
+                    if(visible)
                     {
                         touch.tPrintf("设置模式:");
                         settingsPage.refreshSettings();
                     }
                 }
             }
-
             Tab {
                 title: qsTr("About")
                 id: infoTab
