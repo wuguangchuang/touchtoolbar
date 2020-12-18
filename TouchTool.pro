@@ -15,7 +15,8 @@ SOURCES += src/presenter/touchpresenter.cpp \
     main.cpp \
     src/drawpanel.cpp \
     src/tusbevent.cpp \
-    src/singleapp.cpp
+    src/singleapp.cpp \
+    src/systemtray.cpp
 
 RESOURCES += qml.qrc \
     images.qrc \
@@ -56,7 +57,8 @@ HEADERS += \
     include/singleapp.h \
     include/sdk/hidapi.h \
     include/sdk/tPrintf.h \
-    include/sdk/tdebug.h
+    include/sdk/tdebug.h \
+    include/systemtray.h
 
 win32 {
     LIBS += -lhid -lsetupapi

@@ -854,7 +854,6 @@ Item
             initStandardColor();
             getAllBoardAttributeData();
             initplatLoadTestColor();
-//            midRecttextString = "正在检测中!请勿触摸!";
 
             refreshCanvas();
         }

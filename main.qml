@@ -31,7 +31,7 @@ Window {
     property bool setTest: defaultSetTest
 
     id: mainPage
-    visible:true
+    visible:false
     width: mWidth
     height: mHeight
     visibility: Window.Maximized
@@ -45,10 +45,10 @@ Window {
     property int mTAB_Upgrade: 0
     property int mTAB_Test: 1
     property int mTAB_Signal: 2
-    property int mTAB_Info: 3
-    property int mTAB_Settings: 4
-    property int mTAB_Palette: 5
-    property int mTAB_Aging: 6
+    property int mTAB_Aging: 3
+    property int mTAB_Palette: 4
+    property int mTAB_Settings: 5
+    property int mTAB_Info: 6
     property int deviceCount: 0
 
     title: qsTr("TouchAssistant")
@@ -816,9 +816,10 @@ Window {
                             settingsId.caliDataModel = calibrationDataModel;
                         }
                         onClickCalibration: {
-                            calibrationUi.visible = true;
-                            lastVisibility = mainPage.visibility;
-                            showFullScreen();
+                              enterCalibrate();
+//                            calibrationUi.visible = true;
+//                            lastVisibility = mainPage.visibility;
+//                            showFullScreen();
 //                            showToast("无操作" + "后自动退出")
                         }
                     }
@@ -1017,9 +1018,10 @@ Window {
             focus: true
             visible: false
             onExit: {
-                focus = false;
-                visible = false;
-                mainPage.visibility = lastVisibility;
+                exitCalibrate();
+//                focus = false;
+//                visible = false;
+//                mainPage.visibility = lastVisibility;
             }
 
         }
@@ -1900,8 +1902,8 @@ QMessageBox::Critical	3	an icon indicating that the message represents a critica
        }
 
         if (close.accepted) {
-            mainPage.sendCloseOnboardTestWindow();
-
+            setWindowHidden(false);
+            close.accepted = false;
         }
     }
 
@@ -1923,7 +1925,21 @@ QMessageBox::Critical	3	an icon indicating that the message represents a critica
     }
     function setCurrentIndex(index)
     {
-        if(1 === touch.getAppType())
+        if(index !== mTAB_Upgrade && touch.isUpgrading())
+        {
+            showToast(qsTr("During upgrade,don't switch infterface"));
+            return;
+        }
+        if(index !== mTAB_Test && touch.isTesting())
+        {
+            showToast(qsTr("During test,don't switch infterface"));
+            return;
+        }
+        if(calibrationUi.visible)
+        {
+           exitCalibrate();
+        }
+        if(mAPP_Client === touch.getAppType())
         {
             if(index === 3)
                 index = 0;
@@ -1932,17 +1948,48 @@ QMessageBox::Critical	3	an icon indicating that the message represents a critica
         }
         mainTabView.currentIndex = index;
     }
-    function setWindowHidden(visibled)
+
+    function setWindowHidden(visbaled)
     {
-        if(mainPage.visible && visibled)
+        if(mainPage.visible && visbaled)
         {
             return;
         }
-
-        mainPage.setVisible(visibled);
-        if(visibled)
+        mainPage.setVisible(visbaled);
+        if(visbaled)
             mainPage.visibility =  Window.Maximized;
     }
+     function enterCalibrate()
+     {
+         if(touch.isUpgrading())
+         {
+             showToast(qsTr("During upgrade,don't switch infterface"));
+             return;
+         }
+         if(touch.isTesting())
+         {
+             showToast(qsTr("During test,don't switch infterface"));
+             return;
+         }
+         if(!mainPage.visible)
+         {
+             setWindowHidden(true);
+         }
+         if(mainTabView.currentIndex != mTAB_Settings)
+         {
+             mainTabView.currentIndex = mTAB_Settings;
+         }
+         if(!calibrationUi.visible)
+         {
+             calibrationUi.visible = true;
+             lastVisibility = mainPage.visibility;
+             showFullScreen();
+         }
 
-
+     }
+     function exitCalibrate(){
+         calibrationUi.focus = false;
+         calibrationUi.visible = false;
+         mainPage.visibility = lastVisibility;
+     }
 }

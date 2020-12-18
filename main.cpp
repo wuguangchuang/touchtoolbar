@@ -24,10 +24,13 @@ using namespace Touch;
 #include "sdk/tdebug.h"
 
 #include "include/drawpanel.h"
+#include "systemtray.h"
 
 #define zh_CN 1
 #define en_US 0
 
+void SetProcessAutoRunSelf(const QString &appPath);
+void AutoRun(bool isAutoRun);
 //分析设备，然后将设备添加到设备链表struct _touch_vendor_list
 void parseDevices(QFile &loadFile)
 {
@@ -108,7 +111,7 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
     QTranslator translator;
     //bool ok = translator.load(":lang/zh_CN.qm");
-    bool ok;
+    bool ok = false;
     TINFO("start %s: %s, %d", __DATE__, APP_VERSION_NAME, APP_VERSION_CODE);
     SingleApp *singleApp = NULL;
     if (isAlreadyRunning(&singleApp)) {
@@ -120,7 +123,9 @@ int main(int argc, char *argv[])
 
 //    QQmlComponent configQml(&engine, QUrl(QStringLiteral("qrc:config/touch.qml")));
     //读取配置文件中的qml文件
-    QQmlComponent configQml(&engine, "config/touch.qml");
+    QString appPath = QCoreApplication::applicationDirPath();
+    TDEBUG("软件路径：%s",appPath.toStdString().c_str());
+    QQmlComponent configQml(&engine, appPath + "/config/touch.qml");
     QObject *config = configQml.create();
     if (configQml.isError())
         TDebug::debug(configQml.errorString());
@@ -309,6 +314,15 @@ int main(int argc, char *argv[])
         object = component.create();
         touch->setComponent(object);
     }
+    if(argc > 1 && QString::compare(argv[1],"-selfStarting") == 0)
+    {
+        TDEBUG(" 有两个参数");
+
+    }
+    else
+    {
+        touch->openProgress(true);
+    }
 
 
     //该函数就是调用object对象中的setAppType方法，如果调用成功则返回true，调用失败则返回false，
@@ -324,7 +338,7 @@ int main(int argc, char *argv[])
     }
 
 
-    QQmlComponent configAgingQml(&engine, "config/aging.qml");
+    QQmlComponent configAgingQml(&engine, appPath + "/config/aging.qml");
     config = configAgingQml.create();
     if (configAgingQml.isError()) {
         TDebug::debug(configAgingQml.errorString());
@@ -370,6 +384,9 @@ int main(int argc, char *argv[])
         QThread::msleep(20);
     }
 
+    //开机自启动
+    AutoRun(false);
+//    SetProcessAutoRunSelf(qApp->applicationFilePath());
 
 //    ue.show();
 
@@ -377,5 +394,54 @@ int main(int argc, char *argv[])
 
 //    testNetWork();
     return app.exec();
+}
+#endif
+//设置程序自启动 appPath程序路径
+void AutoRun(bool isAutoRun)
+{
+
+    // HKEY_CURRENT_USER仅仅对当前用户有效，
+    // HKEY_LOCAL_MACHINE对所有用户有效（但需要管理员权限启动）
+
+    QString regPath = "HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run";
+    //QString regPath = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run";
+    QSettings nsettings(regPath, QSettings::NativeFormat);	//NativeFormat在windows下就是系统注册表
+
+    QString napppath = QCoreApplication::applicationFilePath() + " -selfStarting";
+    QString nappname = QCoreApplication::applicationName();
+    TDEBUG("napppath %s" ,napppath.toStdString().c_str());
+    TDEBUG("nappname %s" , nappname.toStdString().c_str());
+    napppath = napppath.replace("/", "\\");
+    if (isAutoRun) {
+        nsettings.setValue(nappname, napppath); // 如果要开机启动，则写入此项
+        TDEBUG("添加启动项");
+    }
+    else {
+        nsettings.remove(nappname);		// 如果要禁止开机启动，则移除此项
+        TDEBUG("删除启动项");
+    }
+}
+#if 0
+void SetProcessAutoRunSelf(const QString &appPath)
+{
+    //注册表路径需要使用双反斜杠，如果是32位系统，要使用QSettings::Registry32Format
+    QSettings settings("HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Run",
+                       QSettings::NativeFormat);
+
+    //以程序名称作为注册表中的键
+    //根据键获取对应的值（程序路径）
+    QFileInfo fInfo(appPath);
+    QString name = fInfo.baseName();
+    QString path = settings.value(name).toString();
+
+    //如果注册表中的路径和当前程序路径不一样，
+    //则表示没有设置自启动或自启动程序已经更换了路径
+    //toNativeSeparators的意思是将"/"替换为"\"
+    QString newPath = QDir::toNativeSeparators(appPath);
+    if (path != newPath)
+    {
+
+        settings.setValue(name, newPath);
+    }
 }
 #endif

@@ -37,6 +37,9 @@ public:
     virtual QVariant getSoftwareInfoName() = 0;
     virtual QVariant getSoftwareInfo() = 0;
     virtual QVariantMap getBoardAndLampData() = 0;
+    virtual bool isUpgrading() = 0;
+    virtual bool isTesting() = 0;
+    virtual QString getTr(QString info) = 0;
 };
 class ProcessStarter : public QProcess {
     Q_OBJECT
@@ -280,6 +283,16 @@ public:
         emit stopAll();
         TDEBUG("send stop thread  signal finshed");
     }
+    Q_INVOKABLE void getUpgradeStatus(){
+       return;
+    }
+
+       Q_INVOKABLE bool isUpgrading(){
+           return touch->isUpgrading();
+    }
+       Q_INVOKABLE bool isTesting(){
+           return touch->isTesting();
+    }
     Q_INVOKABLE bool isrunning()
     {
 //        TDEBUG("There are still threads running ");
@@ -418,6 +431,9 @@ private:
     ProcessStarter starter;
 public:
     bool initSdkDone;
+    void openProgress(bool isOpen);
+    void changeTabIndex(int index);
+    void enterCalibratePage();
 };
 
 #endif // TOUCHPRESENTER_H

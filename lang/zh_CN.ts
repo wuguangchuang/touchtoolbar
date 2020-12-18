@@ -143,98 +143,245 @@
     </message>
 </context>
 <context>
-    <name>Settings</name>
+    <name>SettingCalibratePage</name>
     <message>
-        <location filename="../qml/ui/Settings.qml" line="310"/>
-        <source>usb coordinate mode</source>
-        <translation>USB坐标模式</translation>
-    </message>
-    <message>
-        <location filename="../qml/ui/Settings.qml" line="333"/>
-        <source>simulate mouse</source>
-        <translation>模拟鼠标</translation>
-    </message>
-    <message>
-        <location filename="../qml/ui/Settings.qml" line="340"/>
-        <source>multitouch</source>
-        <translation>多点触摸</translation>
-    </message>
-    <message>
-        <location filename="../qml/ui/Settings.qml" line="357"/>
-        <source>uart coordinate mode</source>
-        <translation>UART坐标模式</translation>
-    </message>
-    <message>
-        <location filename="../qml/ui/Settings.qml" line="380"/>
-        <source>exclude touch size</source>
-        <translation>不包含触摸点大小的多点触摸</translation>
-    </message>
-    <message>
-        <location filename="../qml/ui/Settings.qml" line="387"/>
-        <source>include touch size</source>
-        <translation>包含触摸点大小的多点触摸</translation>
-    </message>
-    <message>
-        <location filename="../qml/ui/Settings.qml" line="404"/>
-        <source>turn over</source>
-        <translation>触摸框翻转</translation>
-    </message>
-    <message>
-        <location filename="../qml/ui/Settings.qml" line="411"/>
-        <source>turn over X</source>
-        <translation>X轴翻转</translation>
-    </message>
-    <message>
-        <location filename="../qml/ui/Settings.qml" line="420"/>
-        <source>turn over Y</source>
-        <translation>Y轴翻转</translation>
-    </message>
-    <message>
-        <location filename="../qml/ui/Settings.qml" line="428"/>
-        <location filename="../qml/ui/Settings.qml" line="483"/>
-        <location filename="../qml/ui/Settings.qml" line="538"/>
-        <location filename="../qml/ui/Settings.qml" line="583"/>
-        <location filename="../qml/ui/Settings.qml" line="692"/>
-        <source>factory reset</source>
-        <translation>恢复出厂</translation>
-    </message>
-    <message>
-        <location filename="../qml/ui/Settings.qml" line="454"/>
-        <source>touch clockwise rotation</source>
-        <translation>触摸框顺时针旋转</translation>
-    </message>
-    <message>
-        <location filename="../qml/ui/Settings.qml" line="510"/>
-        <source>screen clockwise rotation</source>
-        <translation>屏幕顺时针旋转</translation>
-    </message>
-    <message>
-        <location filename="../qml/ui/Settings.qml" line="565"/>
-        <source>MAC OS</source>
-        <translation>MAC OS</translation>
-    </message>
-    <message>
-        <location filename="../qml/ui/Settings.qml" line="573"/>
-        <source>mac os 10.9 or before</source>
-        <translation>MAC OS 10.9及以下</translation>
-    </message>
-    <message>
-        <location filename="../qml/ui/Settings.qml" line="579"/>
-        <source>mac os 10.10 or later</source>
-        <translation>MAC OS 10.10及以上</translation>
-    </message>
-    <message>
-        <location filename="../qml/ui/Settings.qml" line="601"/>
-        <source>Lock environmental parameters</source>
-        <translation>锁定环境参数</translation>
-    </message>
-    <message>
-        <location filename="../qml/ui/Settings.qml" line="630"/>
+        <location filename="../qml/ui/SettingCalibratePage.qml" line="21"/>
         <source>calibrate</source>
         <translation>校准</translation>
     </message>
     <message>
-        <location filename="../qml/ui/Settings.qml" line="637"/>
+        <location filename="../qml/ui/SettingCalibratePage.qml" line="28"/>
+        <source>calibration</source>
+        <translation>校准</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/SettingCalibratePage.qml" line="37"/>
+        <source>refresh</source>
+        <translation>刷新</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/SettingCalibratePage.qml" line="47"/>
+        <source>set</source>
+        <translation>设置</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/SettingCalibratePage.qml" line="55"/>
+        <source>save data failure</source>
+        <translation>保存数据出错</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/SettingCalibratePage.qml" line="57"/>
+        <source>set success</source>
+        <translation>设置成功</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/SettingCalibratePage.qml" line="64"/>
+        <source>save</source>
+        <translation>保存</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/SettingCalibratePage.qml" line="76"/>
+        <source>read</source>
+        <translation>读取</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/SettingCalibratePage.qml" line="88"/>
+        <source>hide datas</source>
+        <translation>隐藏数据</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/SettingCalibratePage.qml" line="88"/>
+        <source>show datas</source>
+        <translation>显示数据</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/SettingCalibratePage.qml" line="98"/>
+        <source>factory reset</source>
+        <translation>恢复出厂</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/SettingCalibratePage.qml" line="129"/>
+        <source>Number</source>
+        <translation>编号</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/SettingCalibratePage.qml" line="135"/>
+        <location filename="../qml/ui/SettingCalibratePage.qml" line="141"/>
+        <source>target point %1</source>
+        <translation>目标点 %1</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/SettingCalibratePage.qml" line="147"/>
+        <location filename="../qml/ui/SettingCalibratePage.qml" line="153"/>
+        <source>collect point %1</source>
+        <translation>采集点 %1</translation>
+    </message>
+</context>
+<context>
+    <name>SettingCoordsPage</name>
+    <message>
+        <location filename="../qml/ui/SettingCoordsPage.qml" line="24"/>
+        <source>usb coordinate mode</source>
+        <translation>USB坐标模式</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/SettingCoordsPage.qml" line="48"/>
+        <source>simulate mouse</source>
+        <translation>模拟鼠标</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/SettingCoordsPage.qml" line="55"/>
+        <source>multitouch</source>
+        <translation>多点触摸</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/SettingCoordsPage.qml" line="75"/>
+        <source>uart coordinate mode</source>
+        <translation>UART坐标模式</translation>
+    </message>
+</context>
+<context>
+    <name>SettingPage</name>
+    <message>
+        <location filename="../qml/ui/SettingPage.qml" line="425"/>
+        <source>Coordinate</source>
+        <translation>坐标</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/SettingPage.qml" line="439"/>
+        <source>Spin</source>
+        <translation>旋转</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/SettingPage.qml" line="453"/>
+        <source>Calibrate</source>
+        <translation>校准</translation>
+    </message>
+</context>
+<context>
+    <name>SettingSpinPage</name>
+    <message>
+        <location filename="../qml/ui/SettingSpinPage.qml" line="24"/>
+        <source>turn over</source>
+        <translation>触摸框翻转</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/SettingSpinPage.qml" line="32"/>
+        <source>turn over X</source>
+        <translation>X轴翻转</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/SettingSpinPage.qml" line="41"/>
+        <source>turn over Y</source>
+        <translation>Y轴翻转</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/SettingSpinPage.qml" line="49"/>
+        <location filename="../qml/ui/SettingSpinPage.qml" line="112"/>
+        <location filename="../qml/ui/SettingSpinPage.qml" line="176"/>
+        <source>factory reset</source>
+        <translation>恢复出厂</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/SettingSpinPage.qml" line="82"/>
+        <source>touch clockwise rotation</source>
+        <translation>触摸框顺时针旋转</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/SettingSpinPage.qml" line="147"/>
+        <source>screen clockwise rotation</source>
+        <translation>屏幕顺时针旋转</translation>
+    </message>
+</context>
+<context>
+    <name>Settings</name>
+    <message>
+        <location filename="../qml/ui/Settings.qml" line="319"/>
+        <source>usb coordinate mode</source>
+        <translation>USB坐标模式</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/Settings.qml" line="342"/>
+        <source>simulate mouse</source>
+        <translation>模拟鼠标</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/Settings.qml" line="349"/>
+        <source>multitouch</source>
+        <translation>多点触摸</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/Settings.qml" line="374"/>
+        <source>uart coordinate mode</source>
+        <translation>UART坐标模式</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/Settings.qml" line="397"/>
+        <source>exclude touch size</source>
+        <translation>不包含触摸点大小的多点触摸</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/Settings.qml" line="404"/>
+        <source>include touch size</source>
+        <translation>包含触摸点大小的多点触摸</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/Settings.qml" line="429"/>
+        <source>turn over</source>
+        <translation>触摸框翻转</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/Settings.qml" line="436"/>
+        <source>turn over X</source>
+        <translation>X轴翻转</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/Settings.qml" line="445"/>
+        <source>turn over Y</source>
+        <translation>Y轴翻转</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/Settings.qml" line="453"/>
+        <location filename="../qml/ui/Settings.qml" line="516"/>
+        <location filename="../qml/ui/Settings.qml" line="580"/>
+        <location filename="../qml/ui/Settings.qml" line="858"/>
+        <source>factory reset</source>
+        <translation>恢复出厂</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/Settings.qml" line="487"/>
+        <source>touch clockwise rotation</source>
+        <translation>触摸框顺时针旋转</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/Settings.qml" line="552"/>
+        <source>screen clockwise rotation</source>
+        <translation>屏幕顺时针旋转</translation>
+    </message>
+    <message>
+        <source>MAC OS</source>
+        <translation type="vanished">MAC OS</translation>
+    </message>
+    <message>
+        <source>mac os 10.9 or before</source>
+        <translation type="vanished">MAC OS 10.9及以下</translation>
+    </message>
+    <message>
+        <source>mac os 10.10 or later</source>
+        <translation type="vanished">MAC OS 10.10及以上</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/Settings.qml" line="643"/>
+        <source>Lock environmental parameters</source>
+        <translation>锁定环境参数</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/Settings.qml" line="672"/>
+        <source>calibrate</source>
+        <translation>校准</translation>
+    </message>
+    <message>
+        <location filename="../qml/ui/Settings.qml" line="679"/>
         <source>recalibration</source>
         <translation>校准</translation>
     </message>
@@ -243,61 +390,69 @@
         <translation type="vanished">重新校准</translation>
     </message>
     <message>
-        <location filename="../qml/ui/Settings.qml" line="648"/>
+        <location filename="../qml/ui/Settings.qml" line="712"/>
         <source>refresh</source>
         <translation>刷新</translation>
     </message>
     <message>
-        <location filename="../qml/ui/Settings.qml" line="654"/>
+        <location filename="../qml/ui/Settings.qml" line="738"/>
         <source>set</source>
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="../qml/ui/Settings.qml" line="660"/>
+        <location filename="../qml/ui/Settings.qml" line="746"/>
         <source>save data failure</source>
         <translation>保存数据出错</translation>
     </message>
     <message>
-        <location filename="../qml/ui/Settings.qml" line="662"/>
+        <location filename="../qml/ui/Settings.qml" line="748"/>
         <source>set success</source>
         <translation>设置成功</translation>
     </message>
     <message>
-        <location filename="../qml/ui/Settings.qml" line="667"/>
+        <location filename="../qml/ui/Settings.qml" line="778"/>
         <source>save</source>
         <translation>保存</translation>
     </message>
     <message>
-        <location filename="../qml/ui/Settings.qml" line="675"/>
+        <location filename="../qml/ui/Settings.qml" line="809"/>
         <source>read</source>
         <translation>读取</translation>
     </message>
     <message>
-        <location filename="../qml/ui/Settings.qml" line="684"/>
+        <location filename="../qml/ui/Settings.qml" line="840"/>
         <source>hide datas</source>
         <translation>隐藏数据</translation>
     </message>
     <message>
-        <location filename="../qml/ui/Settings.qml" line="684"/>
+        <location filename="../qml/ui/Settings.qml" line="840"/>
         <source>show datas</source>
         <translation>显示数据</translation>
     </message>
     <message>
-        <location filename="../qml/ui/Settings.qml" line="719"/>
+        <location filename="../qml/ui/Settings.qml" line="885"/>
         <source>Number</source>
         <translation>编号</translation>
     </message>
     <message>
-        <location filename="../qml/ui/Settings.qml" line="725"/>
-        <location filename="../qml/ui/Settings.qml" line="731"/>
+        <location filename="../qml/ui/Settings.qml" line="891"/>
+        <location filename="../qml/ui/Settings.qml" line="897"/>
         <source>target point %1</source>
         <translation>目标点 %1</translation>
     </message>
     <message>
-        <location filename="../qml/ui/Settings.qml" line="737"/>
-        <location filename="../qml/ui/Settings.qml" line="743"/>
+        <location filename="../qml/ui/Settings.qml" line="903"/>
+        <location filename="../qml/ui/Settings.qml" line="909"/>
         <source>collect point %1</source>
         <translation>采集点 %1</translation>
+    </message>
+</context>
+<context>
+    <name>SystemTray</name>
+    <message>
+        <location filename="../src/systemtray.cpp" line="229"/>
+        <source>TouchAssistant</source>
+        <translation>TouchAssistant</translation>
     </message>
 </context>
 <context>
@@ -337,235 +492,269 @@
 <context>
     <name>Touch::TouchTools</name>
     <message>
-        <location filename="../src/TouchTools.cpp" line="41"/>
-        <location filename="../src/TouchTools.cpp" line="378"/>
+        <location filename="../src/TouchTools.cpp" line="43"/>
+        <location filename="../src/TouchTools.cpp" line="449"/>
         <source>connected</source>
         <translation>已连接</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="41"/>
+        <location filename="../src/TouchTools.cpp" line="43"/>
         <source>disconnected</source>
         <translation>已断开</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="169"/>
-        <location filename="../src/TouchTools.cpp" line="901"/>
+        <location filename="../src/TouchTools.cpp" line="231"/>
+        <location filename="../src/TouchTools.cpp" line="1052"/>
         <source>Cancel test</source>
         <translation>取消测试</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="178"/>
-        <location filename="../src/TouchTools.cpp" line="254"/>
+        <location filename="../src/TouchTools.cpp" line="240"/>
+        <location filename="../src/TouchTools.cpp" line="324"/>
         <source>Error</source>
         <translation>错误</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="178"/>
-        <location filename="../src/TouchTools.cpp" line="479"/>
-        <location filename="../src/TouchTools.cpp" line="550"/>
-        <location filename="../src/TouchTools.cpp" line="669"/>
+        <location filename="../src/TouchTools.cpp" line="240"/>
+        <location filename="../src/TouchTools.cpp" line="551"/>
+        <location filename="../src/TouchTools.cpp" line="622"/>
+        <location filename="../src/TouchTools.cpp" line="741"/>
         <source>No connected devices!</source>
         <translation>没找到连接的设备!</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="184"/>
-        <location filename="../src/TouchTools.cpp" line="896"/>
-        <location filename="../src/TouchTools.cpp" line="904"/>
-        <location filename="../src/TouchTools.cpp" line="906"/>
+        <location filename="../src/TouchTools.cpp" line="246"/>
+        <location filename="../src/TouchTools.cpp" line="1047"/>
+        <location filename="../src/TouchTools.cpp" line="1055"/>
+        <location filename="../src/TouchTools.cpp" line="1057"/>
         <source>Test</source>
         <translation>测试</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="192"/>
+        <location filename="../src/TouchTools.cpp" line="256"/>
         <source>Start test</source>
         <translation>开始测试</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="251"/>
+        <location filename="../src/TouchTools.cpp" line="321"/>
         <source>Cancel upgrade</source>
         <translation>取消升级</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="254"/>
+        <location filename="../src/TouchTools.cpp" line="324"/>
         <source>Please plug in device</source>
         <translation>请插入设备</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="263"/>
-        <location filename="../src/TouchTools.cpp" line="277"/>
-        <location filename="../src/TouchTools.cpp" line="969"/>
-        <location filename="../src/TouchTools.cpp" line="972"/>
+        <location filename="../src/TouchTools.cpp" line="333"/>
+        <location filename="../src/TouchTools.cpp" line="348"/>
+        <location filename="../src/TouchTools.cpp" line="1122"/>
+        <location filename="../src/TouchTools.cpp" line="1125"/>
         <source>Upgrade</source>
         <translation>升级</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="271"/>
+        <location filename="../src/TouchTools.cpp" line="342"/>
         <source>Upgrading! Do not disconnect the device</source>
         <translation>升级中!请勿断开设备</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="277"/>
+        <location filename="../src/TouchTools.cpp" line="348"/>
         <source>Uprade failure</source>
         <translation>升级失败</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="483"/>
-        <location filename="../src/TouchTools.cpp" line="534"/>
+        <location filename="../src/TouchTools.cpp" line="555"/>
+        <location filename="../src/TouchTools.cpp" line="606"/>
         <source>Device infomation</source>
         <translation>设备信息</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="485"/>
-        <location filename="../src/TouchTools.cpp" line="535"/>
+        <location filename="../src/TouchTools.cpp" line="557"/>
+        <location filename="../src/TouchTools.cpp" line="607"/>
         <source>Device name:</source>
         <translation>设备名称:</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="50"/>
-        <location filename="../src/TouchTools.cpp" line="486"/>
-        <location filename="../src/TouchTools.cpp" line="536"/>
-        <location filename="../src/TouchTools.cpp" line="673"/>
+        <location filename="../src/TouchTools.cpp" line="52"/>
+        <location filename="../src/TouchTools.cpp" line="558"/>
+        <location filename="../src/TouchTools.cpp" line="608"/>
+        <location filename="../src/TouchTools.cpp" line="745"/>
         <source>Fireware version:</source>
         <translation>固件版本:</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="50"/>
-        <location filename="../src/TouchTools.cpp" line="487"/>
-        <location filename="../src/TouchTools.cpp" line="537"/>
-        <location filename="../src/TouchTools.cpp" line="674"/>
+        <location filename="../src/TouchTools.cpp" line="52"/>
+        <location filename="../src/TouchTools.cpp" line="559"/>
+        <location filename="../src/TouchTools.cpp" line="609"/>
+        <location filename="../src/TouchTools.cpp" line="746"/>
         <source>Fireware checksum:</source>
         <translation>固件验证码:</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="488"/>
-        <location filename="../src/TouchTools.cpp" line="538"/>
+        <location filename="../src/TouchTools.cpp" line="163"/>
+        <source>file does no exist</source>
+        <translation>升级文件不存在</translation>
+    </message>
+    <message>
+        <location filename="../src/TouchTools.cpp" line="560"/>
+        <location filename="../src/TouchTools.cpp" line="610"/>
         <source>Support touch number:</source>
         <translation>支持的触摸点数:</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="497"/>
-        <location filename="../src/TouchTools.cpp" line="568"/>
+        <location filename="../src/TouchTools.cpp" line="569"/>
+        <location filename="../src/TouchTools.cpp" line="640"/>
         <source>Software information</source>
         <translation>软件信息</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="498"/>
+        <location filename="../src/TouchTools.cpp" line="570"/>
         <source>Software Name</source>
         <translation>软件名称</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="516"/>
-        <location filename="../src/TouchTools.cpp" line="570"/>
+        <location filename="../src/TouchTools.cpp" line="588"/>
+        <location filename="../src/TouchTools.cpp" line="642"/>
         <source>Software version:</source>
         <translation>软件版本:</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="518"/>
-        <location filename="../src/TouchTools.cpp" line="571"/>
+        <location filename="../src/TouchTools.cpp" line="590"/>
+        <location filename="../src/TouchTools.cpp" line="643"/>
         <source>OS name:</source>
         <translation>操作系统名称:</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="519"/>
-        <location filename="../src/TouchTools.cpp" line="572"/>
+        <location filename="../src/TouchTools.cpp" line="591"/>
+        <location filename="../src/TouchTools.cpp" line="644"/>
         <source>OS version:</source>
         <translation>操作系统版本:</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="569"/>
+        <location filename="../src/TouchTools.cpp" line="641"/>
         <source>Software Name:</source>
         <translation>软件名称：</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="850"/>
-        <location filename="../src/TouchTools.cpp" line="991"/>
+        <location filename="../src/TouchTools.cpp" line="1145"/>
         <source>Being detected! Do not touch!</source>
         <translation>正在检测中!请勿触摸!</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="993"/>
+        <location filename="../src/TouchTools.cpp" line="1147"/>
         <source>Check the onboard test result failed</source>
         <translation>检查板载测试结果失败</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="994"/>
+        <location filename="../src/TouchTools.cpp" line="1148"/>
         <source>Failed to get test item</source>
         <translation>获取测试项失败</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="995"/>
+        <location filename="../src/TouchTools.cpp" line="1149"/>
         <source>Failed to switch to touch mode</source>
         <translation>切换到触摸模式失败</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="996"/>
+        <location filename="../src/TouchTools.cpp" line="1150"/>
         <source>Please draw a picture around the touch frame</source>
         <translation>请围绕触摸框四边画图</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="997"/>
+        <location filename="../src/TouchTools.cpp" line="1151"/>
         <source>The onboard test function is not activated</source>
         <translation>未启动板载测试功能</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="998"/>
+        <location filename="../src/TouchTools.cpp" line="1152"/>
         <source>Onboard test failed</source>
         <translation>板载测试失败</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="999"/>
+        <location filename="../src/TouchTools.cpp" line="1153"/>
         <source>Onboard test passed</source>
         <translation>板载测试通过</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="1000"/>
+        <location filename="../src/TouchTools.cpp" line="1154"/>
         <source>The firmware package size is larger than the report package</source>
         <translation>固件包大小比report包大</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="1001"/>
+        <location filename="../src/TouchTools.cpp" line="1155"/>
         <source>Failed to switch to upgrade mode</source>
         <translation>切换到升级模式下失败</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="1002"/>
+        <location filename="../src/TouchTools.cpp" line="1156"/>
         <source>Failed to verify firmware</source>
         <translation>校验固件失败</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="1003"/>
+        <location filename="../src/TouchTools.cpp" line="1157"/>
         <source>Failed to download firmware</source>
         <translation>下载固件失败</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="1004"/>
+        <location filename="../src/TouchTools.cpp" line="1158"/>
         <source>IAP failed</source>
         <translation>IAP失败</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="1005"/>
+        <location filename="../src/TouchTools.cpp" line="1159"/>
         <source>Firmware error</source>
         <translation>固件出错</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="992"/>
+        <location filename="../src/TouchTools.cpp" line="1160"/>
+        <source>Calibrate</source>
+        <translation>校准</translation>
+    </message>
+    <message>
+        <location filename="../src/TouchTools.cpp" line="1161"/>
+        <source>Settings</source>
+        <translation>设置</translation>
+    </message>
+    <message>
+        <location filename="../src/TouchTools.cpp" line="1162"/>
+        <source>About</source>
+        <translation>关于</translation>
+    </message>
+    <message>
+        <location filename="../src/TouchTools.cpp" line="1163"/>
+        <source>Mode</source>
+        <translation>更多</translation>
+    </message>
+    <message>
+        <location filename="../src/TouchTools.cpp" line="1164"/>
+        <source>Open</source>
+        <translation>打开软件</translation>
+    </message>
+    <message>
+        <location filename="../src/TouchTools.cpp" line="1165"/>
+        <source>Exit</source>
+        <translation>退出</translation>
+    </message>
+    <message>
+        <location filename="../src/TouchTools.cpp" line="1146"/>
         <source>test failed</source>
         <translation>测试失败</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="893"/>
-        <location filename="../src/TouchTools.cpp" line="894"/>
+        <location filename="../src/TouchTools.cpp" line="1044"/>
+        <location filename="../src/TouchTools.cpp" line="1045"/>
         <source>Test pass</source>
         <translation>测试通过</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="893"/>
-        <location filename="../src/TouchTools.cpp" line="894"/>
+        <location filename="../src/TouchTools.cpp" line="1044"/>
+        <location filename="../src/TouchTools.cpp" line="1045"/>
         <source>Test failed</source>
         <translation>测试失败</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="902"/>
+        <location filename="../src/TouchTools.cpp" line="1053"/>
         <source>You have cancelled the test</source>
         <translation>您已取消测试</translation>
     </message>
@@ -574,34 +763,34 @@
         <translation type="vanished">测试</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="947"/>
+        <location filename="../src/TouchTools.cpp" line="1100"/>
         <source>Load fireware done</source>
         <translation>加载升级文件成功</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="950"/>
+        <location filename="../src/TouchTools.cpp" line="1103"/>
         <source>Reboot device done</source>
         <translation>重启设备成功</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="953"/>
+        <location filename="../src/TouchTools.cpp" line="1106"/>
         <source>Enter download mode</source>
         <translation>进入升级模式</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="956"/>
+        <location filename="../src/TouchTools.cpp" line="1109"/>
         <source>Start download fireware</source>
         <translation>开始加载升级文件</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="969"/>
-        <location filename="../src/TouchTools.cpp" line="970"/>
+        <location filename="../src/TouchTools.cpp" line="1122"/>
+        <location filename="../src/TouchTools.cpp" line="1123"/>
         <source>Upgrade success</source>
         <translation>升级成功</translation>
     </message>
     <message>
-        <location filename="../src/TouchTools.cpp" line="972"/>
-        <location filename="../src/TouchTools.cpp" line="973"/>
+        <location filename="../src/TouchTools.cpp" line="1125"/>
+        <location filename="../src/TouchTools.cpp" line="1126"/>
         <source>Upgrade failed</source>
         <translation>升级失败</translation>
     </message>
@@ -616,12 +805,12 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../main.qml" line="53"/>
+        <location filename="../main.qml" line="60"/>
         <source>TouchAssistant</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../main.qml" line="55"/>
+        <location filename="../main.qml" line="62"/>
         <source>sure to stop aging?</source>
         <translation>确定退出老化?</translation>
     </message>
@@ -630,19 +819,19 @@
         <translation type="vanished">升级</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="137"/>
-        <location filename="../main.qml" line="175"/>
-        <location filename="../main.qml" line="183"/>
+        <location filename="../main.qml" line="147"/>
+        <location filename="../main.qml" line="185"/>
+        <location filename="../main.qml" line="193"/>
         <source>Upgrade</source>
         <translation>升级</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="189"/>
+        <location filename="../main.qml" line="199"/>
         <source>During upgrade</source>
         <translation>升级中</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="243"/>
+        <location filename="../main.qml" line="253"/>
         <source>Select upgrade file</source>
         <translation>选择升级文件</translation>
     </message>
@@ -659,17 +848,17 @@
         <translation type="vanished">取消测试</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="405"/>
+        <location filename="../main.qml" line="415"/>
         <source>Test</source>
         <translation>测试</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="467"/>
+        <location filename="../main.qml" line="477"/>
         <source>Cancel test</source>
         <translation>取消测试</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="645"/>
+        <location filename="../main.qml" line="655"/>
         <source>Signal chart</source>
         <translation>信号图</translation>
     </message>
@@ -678,12 +867,12 @@
         <translation type="vanished">加速老化</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="776"/>
+        <location filename="../main.qml" line="786"/>
         <source>stop accelerate aging</source>
         <translation>停止加速老化</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="784"/>
+        <location filename="../main.qml" line="794"/>
         <source>Paint</source>
         <translation>全屏画图</translation>
     </message>
@@ -696,61 +885,74 @@
         <translation type="vanished">关于</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="742"/>
+        <location filename="../main.qml" line="752"/>
         <source>Accelerate aging</source>
         <translation>加速老化</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="805"/>
+        <location filename="../main.qml" line="815"/>
+        <location filename="../main.qml" line="983"/>
         <source>Settings</source>
         <translation>设置</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="835"/>
+        <location filename="../main.qml" line="846"/>
         <source>About</source>
         <translation>关于</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1135"/>
+        <location filename="../main.qml" line="1161"/>
         <source>Up to 10 pieces of firmware can be stored</source>
         <translation>最多可以存放10条固件</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1082"/>
+        <location filename="../main.qml" line="1108"/>
         <source>bin file</source>
         <translation>Bin文件</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="293"/>
-        <location filename="../main.qml" line="314"/>
+        <location filename="../main.qml" line="303"/>
+        <location filename="../main.qml" line="324"/>
         <source>clear history(up to ten)</source>
-        <translation>清空历史(最多存放十条固件)</translation>
+        <translation>清空历史（最多存放10个文件）</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1082"/>
-        <location filename="../main.qml" line="1102"/>
+        <location filename="../main.qml" line="1108"/>
+        <location filename="../main.qml" line="1128"/>
         <source>all files</source>
         <translation>所有文件</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1102"/>
+        <location filename="../main.qml" line="1128"/>
         <source>json file</source>
         <translation>json文件</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1767"/>
+        <location filename="../main.qml" line="1798"/>
         <source>Saved successfully</source>
         <translation>保存成功</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1892"/>
+        <location filename="../main.qml" line="1923"/>
         <source>Upgrading! Please do not close the program</source>
         <translation>正在升级!请不要关闭程序</translation>
     </message>
     <message>
-        <location filename="../main.qml" line="1896"/>
+        <location filename="../main.qml" line="1927"/>
         <source>Testing! Please do not close the program</source>
         <translation>正在测试!请不要关闭程序</translation>
+    </message>
+    <message>
+        <location filename="../main.qml" line="1957"/>
+        <location filename="../main.qml" line="1994"/>
+        <source>During upgrade,don&apos;t switch infterface</source>
+        <translation>正在升级中，请勿切换到其他页面！</translation>
+    </message>
+    <message>
+        <location filename="../main.qml" line="1962"/>
+        <location filename="../main.qml" line="1999"/>
+        <source>During test,don&apos;t switch infterface</source>
+        <translation>正在测试中，请勿切换到其他页面！</translation>
     </message>
 </context>
 </TS>

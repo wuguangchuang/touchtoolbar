@@ -147,6 +147,126 @@
     </message>
 </context>
 <context>
+    <name>SettingCalibratePage</name>
+    <message>
+        <source>calibrate</source>
+        <translation type="unfinished">校準</translation>
+    </message>
+    <message>
+        <source>calibration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>refresh</source>
+        <translation type="unfinished">刷新</translation>
+    </message>
+    <message>
+        <source>set</source>
+        <translation type="unfinished">設置</translation>
+    </message>
+    <message>
+        <source>save data failure</source>
+        <translation type="unfinished">保存數據出錯</translation>
+    </message>
+    <message>
+        <source>set success</source>
+        <translation type="unfinished">設置成功</translation>
+    </message>
+    <message>
+        <source>save</source>
+        <translation type="unfinished">保存</translation>
+    </message>
+    <message>
+        <source>read</source>
+        <translation type="unfinished">讀取</translation>
+    </message>
+    <message>
+        <source>hide datas</source>
+        <translation type="unfinished">隱藏數據</translation>
+    </message>
+    <message>
+        <source>show datas</source>
+        <translation type="unfinished">顯示數據</translation>
+    </message>
+    <message>
+        <source>factory reset</source>
+        <translation type="unfinished">恢復出廠</translation>
+    </message>
+    <message>
+        <source>Number</source>
+        <translation type="unfinished">編號</translation>
+    </message>
+    <message>
+        <source>target point %1</source>
+        <translation type="unfinished">目標點 %1</translation>
+    </message>
+    <message>
+        <source>collect point %1</source>
+        <translation type="unfinished">採集點 %1</translation>
+    </message>
+</context>
+<context>
+    <name>SettingCoordsPage</name>
+    <message>
+        <source>usb coordinate mode</source>
+        <translation type="unfinished">USB坐標模式(1)</translation>
+    </message>
+    <message>
+        <source>simulate mouse</source>
+        <translation type="unfinished">模擬鼠標</translation>
+    </message>
+    <message>
+        <source>multitouch</source>
+        <translation type="unfinished">多點觸摸</translation>
+    </message>
+    <message>
+        <source>uart coordinate mode</source>
+        <translation type="unfinished">UART坐標模式(2)</translation>
+    </message>
+</context>
+<context>
+    <name>SettingPage</name>
+    <message>
+        <source>Coordinate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Spin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Calibrate</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingSpinPage</name>
+    <message>
+        <source>turn over</source>
+        <translation type="unfinished">觸摸框翻轉(3)</translation>
+    </message>
+    <message>
+        <source>turn over X</source>
+        <translation type="unfinished">X軸翻轉</translation>
+    </message>
+    <message>
+        <source>turn over Y</source>
+        <translation type="unfinished">Y軸翻轉</translation>
+    </message>
+    <message>
+        <source>factory reset</source>
+        <translation type="unfinished">恢復出廠</translation>
+    </message>
+    <message>
+        <source>touch clockwise rotation</source>
+        <translation type="unfinished">觸摸框順時針旋轉(4)</translation>
+    </message>
+    <message>
+        <source>screen clockwise rotation</source>
+        <translation type="unfinished">屏幕順時針旋轉(5)</translation>
+    </message>
+</context>
+<context>
     <name>Settings</name>
     <message>
         <source>usb coordinate mode</source>
@@ -198,11 +318,11 @@
     </message>
     <message>
         <source>mac os 10.9 or before</source>
-        <translation>MAC OS 10.9及以下</translation>
+        <translation type="vanished">MAC OS 10.9及以下</translation>
     </message>
     <message>
         <source>mac os 10.10 or later</source>
-        <translation>MAC OS 10.10及以上</translation>
+        <translation type="vanished">MAC OS 10.10及以上</translation>
     </message>
     <message>
         <source>calibrate</source>
@@ -264,9 +384,12 @@
         <source>recalibration</source>
         <translation type="unfinished"></translation>
     </message>
+</context>
+<context>
+    <name>SystemTray</name>
     <message>
-        <source>MAC OS</source>
-        <translation type="unfinished"></translation>
+        <source>TouchAssistant</source>
+        <translation type="unfinished">TouchAssistant</translation>
     </message>
 </context>
 <context>
@@ -510,6 +633,34 @@
         <source>Software Name:</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>file does no exist</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Calibrate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Open</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exit</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>main</name>
@@ -627,6 +778,14 @@
     </message>
     <message>
         <source>clear history(up to ten)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>During upgrade,don&apos;t switch infterface</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>During test,don&apos;t switch infterface</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -210,6 +210,8 @@ void TouchTools::startTest()
 
 void TouchTools::TestThread::run()
 {
+    testing = true;
+    running = true;
     touch_device *dev;
     bool firstTime = true;
     setCancel(false);
@@ -231,6 +233,8 @@ void TouchTools::TestThread::run()
                 touchTool->presenter->setTextButtonText(TouchTools::tr("Test"));
                 touchTool->presenter->setTestButtonCheck(false);
                 touchTool->presenter->setTesting(false);
+                running = false;
+                testing = false;
                 return;
             }
         }
@@ -256,9 +260,14 @@ void TouchTools::TestThread::run()
         break;
     }
 
-    touchTool->mTouchManager->startTest(touchTool->mTouchManager->firstConnectedDevice(),
+    bool ret = touchTool->mTouchManager->startTest(touchTool->mTouchManager->firstConnectedDevice(),
                              &touchTool->mTestLstener,
                              (StandardType)mode);
+    if(!ret)
+    {
+        running = false;
+        testing = false;
+    }
 
 }
 
@@ -288,6 +297,7 @@ void TouchTools::UpgradeThread::run()
     waiting = true;
     running = true;
     cancel = false;
+    upgrading = true;
     bool firstTime = true;
     touchTool->presenter->setUpgrading(true);
     do {
@@ -309,6 +319,7 @@ void TouchTools::UpgradeThread::run()
             touchTool->presenter->setUpgrading(false);
             touchTool->presenter->setUpgradeButtonText(TouchTools::tr("Upgrade"));
             cancel = false;
+            upgrading = false;
             return;
         }
     } while (dev == NULL || !dev->touch.connected);
@@ -323,7 +334,7 @@ void TouchTools::UpgradeThread::run()
     if (result != 0) {
         touchTool->showMessage(TouchTools::tr("Upgrade"), TouchTools::tr("Uprade failure"));
         touchTool->presenter->setUpgradeButtonEnable(true);
-
+        upgrading = false;
     }
     running = false;
     TDEBUG("start upgrade end");
@@ -809,7 +820,8 @@ QVariantMap TouchTools::getSignalData(QVariant index, int count)
     delete data;
     return map;
 }
-
+bool TouchTools::upgrading = false;
+bool TouchTools::testing = false;
 #define show_line() TDEBUG("%s [%d]", __func__, __LINE__);
 TouchTools::TouchTools(QObject *parent, TouchPresenter *presenter,int argc,char **argv) : QObject(parent),
     mTestLstener(this), mUpgradeListener(this), initSdkThread(this), upgradeThread(this),
@@ -821,6 +833,8 @@ TouchTools::TouchTools(QObject *parent, TouchPresenter *presenter,int argc,char 
      this->argc = argc;
      this->argv = argv;
     }
+    tray = new SystemTray(this,this);
+//    tray->hide();
     firstTimeUpdate = false;
     if (presenter == NULL) {
         TDebug::error("presenter is NULL");
@@ -850,9 +864,10 @@ TouchTools::TouchTools(QObject *parent, TouchPresenter *presenter,int argc,char 
 
     QObject::connect(presenter, SIGNAL(startTest()),
                      this, SLOT(startTest()));
+    QObject::connect(tray,SIGNAL(signal_close()),this,SLOT(exitProject()));
 
-//    QObject::connect(timer,SIGNAL(timeout()),this,SLOT(timeoutWorking()));
-//    timer->start(25000);
+    QObject::connect(timer,SIGNAL(timeout()),this,SLOT(timeoutWorking()));
+    timer->start(25000);
 
     QObject::connect(argcTimer,SIGNAL(timeout()),this,SLOT(exitProject()));
     if(argc > 1 && strcmp(argv[1],"-changeCoordsMode") == 0)
@@ -880,6 +895,7 @@ void TouchTools::setLanguage(int lu)
 
 void TouchTools::exitProject()
 {
+    tray->closeWidget();
     mTouchManager->mHotplugThread.stopThread();
     if(argc > 1 && QString::compare(argv[1],"-changeCoordsMode") == 0)
     {
@@ -906,6 +922,8 @@ TouchTools::~TouchTools()
 
 
     TouchManager::freeAllTouchDeviceInfo();
+    delete tray;
+    tray = NULL;
 
 #endif
 
@@ -923,8 +941,31 @@ QString TouchTools::getTr(QString str)
     {
         return NULL;
     }
-    TDEBUG("%s",tr("Being detected! Do not touch!").toStdString().c_str());
     return tr(str.toStdString().c_str());
+}
+void TouchTools::openProgress(bool isOpen)
+{
+    presenter->openProgress(isOpen);
+}
+
+void TouchTools::setPageIndex(int index)
+{
+    presenter->changeTabIndex(index);
+}
+
+void TouchTools::enterCalibratePage()
+{
+    presenter->enterCalibratePage();
+}
+
+bool TouchTools::isUpgrading()
+{
+    return upgrading;
+}
+
+bool TouchTools::isTesting()
+{
+    return testing;
 }
 
 void TouchTools::TestListener::inProgress(int progress, QString message)
@@ -985,7 +1026,8 @@ void TouchTools::TestListener::onTestDone(bool result, QString text,bool stop,bo
     manager->presenter->setTestButtonCheck(false);
     manager->presenter->setTesting(false);
 
-
+    manager->setTestThreadRunning(false);
+    TouchTools::testing = false;
 }
 
 void TouchTools::TestListener::setNewWindowVisable()
@@ -1051,6 +1093,7 @@ void TouchTools::UpgradeListener::onUpgradeDone(bool result, QString message)
     manager->presenter->setUpgradeButtonEnable(true);
 
     manager->presenter->setUpgrading(false);
+    TouchTools::upgrading = false;
 }
 
 void TouchTools::UpgradeListener::showUpdateMessageDialog(QString title, QString message, int type)
@@ -1079,6 +1122,11 @@ void TouchTools::addTouchManagerTr(){
     tr("Failed to download firmware");
     tr("IAP failed");
     tr("Firmware error");
-
+    tr("Calibrate");
+    tr("Settings");
+    tr("About");
+    tr("Mode");
+    tr("Open");
+    tr("Exit");
 }
 

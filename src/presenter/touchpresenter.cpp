@@ -735,4 +735,42 @@ QVariant TouchPresenter::testCaliCapture(QVariant time)
     touchManager->testCalibrationCapture(NULL, time.toInt());
     return QVariant::fromValue(true);
 }
+//响应托盘
+void TouchPresenter::openProgress(bool isOpen)
+{
+    if (component == NULL) {
+        return;
+    }
+    QMetaObject::invokeMethod(component, "setWindowHidden",
+                              Q_ARG(QVariant, isOpen));
+    return;
+}
+
+void TouchPresenter::changeTabIndex(int index)
+{
+    if (component == NULL) {
+        return;
+    }
+    QMetaObject::invokeMethod(component, "setWindowHidden",
+                              Q_ARG(QVariant, true));
+
+    QMetaObject::invokeMethod(component, "setCurrentIndex",
+                              Q_ARG(QVariant, index));
+}
+
+void TouchPresenter::enterCalibratePage()
+{
+    if (component == NULL) {
+        return;
+    }
+    if(touchManager->firstConnectedDevice()==NULL)
+    {
+        QMetaObject::invokeMethod(component, "showToast",
+                                  Q_ARG(QVariant, touch->getTr("No connected devices!")));
+        return;
+    }
+    QMetaObject::invokeMethod(component, "enterCalibrate");
+}
+
+
 

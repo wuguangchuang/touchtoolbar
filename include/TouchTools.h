@@ -9,7 +9,7 @@
 #include "sdk/TouchManager.h"
 #include "touchaging.h"
 #include <QTranslator>
-
+#include "systemtray.h"
 
 namespace Touch {
 
@@ -39,7 +39,8 @@ typedef enum {
 
 
 class TouchTools : public QObject, public CommandThread::CommandListener,
-        public TouchManager::HotplugListener, public TouchInterface,public TouchManager::Trans
+        public TouchManager::HotplugListener, public TouchInterface,public TouchManager::Trans,
+        public SystemTray::Trans,public SystemTray::ActionSignal
 {
     Q_OBJECT
 public:
@@ -66,6 +67,15 @@ public:
 
     void onCommandDone(touch_device *dev, touch_package *require, touch_package *reply);
     QString getTr(QString str);
+    //托盘
+    void openProgress(bool isOpen);
+    void setPageIndex(int index);
+    void enterCalibratePage();
+
+    bool isUpgrading();
+    bool isTesting();
+
+
     void onTouchHotplug(touch_device* dev, const int attached, const void *val);
     void setHotplugInterval(unsigned int interval) {
         hotplugInterval = interval;
@@ -111,6 +121,7 @@ private:
     touch_device *mCurDevice;
     int mDeviceCount;
     TouchManager *mTouchManager;
+    SystemTray *tray;
     AppType appType;
     unsigned int hotplugInterval;
 
@@ -135,6 +146,7 @@ private:
 
     class UpgradeThread : public QThread {
     public:
+        bool running;
         UpgradeThread(TouchTools *tool) : touchTool(tool), running(false), waiting(false){}
         bool isWaiting() { return waiting; }
         void setWaiting(bool wait) { waiting = wait; }
@@ -145,12 +157,12 @@ private:
         TouchTools *touchTool;
     private:
         bool waiting;
-        bool running;
         bool cancel;
     };
     class TestThread : public QThread {
     public:
-        TestThread(TouchTools *tool) : touchTool(tool),cancel(false){}
+        bool running;
+        TestThread(TouchTools *tool) : running(false),touchTool(tool),cancel(false){}
         void setCancel(bool t) { cancel = t;}
         bool isCanceled() { return cancel;}
     protected:
@@ -212,6 +224,12 @@ private:
     }
 
     void setMessageText(QString message) {presenter->setMessageText(message);}
+    void setTestThreadRunning(bool isRunning){
+            testThread.running = isRunning;
+        }
+public:
+    static bool upgrading;
+    static bool testing;
 
 private :
     QList<QString> autoUpdatePath;
